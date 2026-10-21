@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>Mood Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Splash / Loading -->
+  <div class="splash" id="splash">
+    <span class="splash-logo">🧠</span>
+    <span class="splash-title">MoodTracker</span>
+    <div class="splash-spinner"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="header" id="appHeader" style="display:none">
+    <div class="header-left">
+      <span class="app-logo">🧠</span>
+      <span class="app-title">MoodTracker</span>
+    </div>
+    <div class="header-right">
+      <span class="today-date" id="todayDate"></span>
+    </div>
+  </header>
+
+  <!-- Bottom Nav -->
+  <nav class="bottom-nav" id="appNav" style="display:none">
+    <button class="nav-btn active" data-tab="home" onclick="switchTab('home')">
+      <span class="nav-icon">😊</span>
+      <span class="nav-label">Mood</span>
+    </button>
+    <button class="nav-btn" data-tab="calendar" onclick="switchTab('calendar')">
+      <span class="nav-icon">📅</span>
+      <span class="nav-label">Kalender</span>
+    </button>
+    <button class="nav-btn" data-tab="stats" onclick="switchTab('stats')">
+      <span class="nav-icon">📊</span>
+      <span class="nav-label">Statistik</span>
+    </button>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content" id="appMain" style="display:none">
+
+    <!-- TAB: HOME -->
+    <section class="tab-panel active" id="tab-home">
+      <div class="section-title">Bagaimana perasaanmu hari ini?</div>
+
+      <!-- Grid mood selalu tampil -->
+      <div class="mood-grid" id="moodGrid"></div>
+
+      <!-- Note + simpan, muncul setelah pilih mood -->
+      <div class="note-area" id="noteArea" style="display:none">
+        <label class="note-label">Tambahkan catatan (opsional)</label>
+        <div class="note-input-row">
+          <textarea id="moodNote" class="note-input" placeholder="Ceritakan harimu..."></textarea>
+          <button class="save-btn" id="saveBtn" onclick="saveMood()">Simpan<br>Mood</button>
+        </div>
+      </div>
+
+      <!-- Hasil mood hari ini, tampil di bawah grid -->
+      <div class="today-mood-card" id="todayMoodCard" style="display:none">
+        <div class="tmc-header">
+          <div class="tmc-label">Mood kamu hari ini</div>
+          <button class="change-btn" onclick="changeMood()">Ubah</button>
+        </div>
+        <div class="tmc-body">
+          <div class="tmc-emoji" id="tmcEmoji"></div>
+          <div class="tmc-info">
+            <div class="tmc-name" id="tmcName"></div>
+            <div class="tmc-note" id="tmcNote"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB: CALENDAR -->
+    <section class="tab-panel" id="tab-calendar">
+      <div class="cal-nav">
+        <button class="cal-arrow" onclick="changeMonth(-1)">&#8249;</button>
+        <span class="cal-month-label" id="calMonthLabel"></span>
+        <button class="cal-arrow" onclick="changeMonth(1)">&#8250;</button>
+      </div>
+      <div class="pixel-legend" id="pixelLegend"></div>
+      <div class="pixel-grid-wrapper">
+        <div class="pixel-day-headers">
+          <span>Min</span><span>Sen</span><span>Sel</span>
+          <span>Rab</span><span>Kam</span><span>Jum</span><span>Sab</span>
+        </div>
+        <div class="pixel-grid" id="pixelGrid"></div>
+      </div>
+      <div class="pixel-detail" id="pixelDetail" style="display:none">
+        <div class="pd-date"  id="pdDate"></div>
+        <div class="pd-emoji" id="pdEmoji"></div>
+        <div class="pd-name"  id="pdName"></div>
+        <div class="pd-note"  id="pdNote"></div>
+      </div>
+    </section>
+
+    <!-- TAB: STATS -->
+    <section class="tab-panel" id="tab-stats">
+      <div class="stats-header">
+        <button class="cal-arrow" onclick="changeStatsMonth(-1)">&#8249;</button>
+        <span class="cal-month-label" id="statsMonthLabel"></span>
+        <button class="cal-arrow" onclick="changeStatsMonth(1)">&#8250;</button>
+      </div>
+      <div class="stats-summary"     id="statsSummary"></div>
+      <div class="stats-chart-title">Distribusi Mood</div>
+      <div class="stats-bars"        id="statsBars"></div>
+      <div class="stats-streak"      id="statsStreak"></div>
+      <div class="stats-frequent"    id="statsFrequent"></div>
+    </section>
+
+  </main>
+
+  <div class="toast" id="toast"></div>
+
+  <!-- Firebase SDK (modular v10) -->
+  <script type="module" src="app.js"></script>
+</body>
+</html>
