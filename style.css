@@ -222,39 +222,91 @@ html, body {
 .save-btn:active:not(:disabled) { transform: scale(0.97); opacity: 0.9; }
 
 /* =====================
-   TODAY MOOD CARD — tampil di bawah grid
+   HOUR PICKER
    ===================== */
-.today-mood-card {
-  background: var(--surface);
-  border-radius: var(--radius);
-  padding: 16px 18px;
-  box-shadow: var(--shadow);
-  margin-top: 4px;
+.hour-picker {
+  margin-bottom: 16px;
 }
-.tmc-header {
+.hour-slot {
+  background: var(--surface);
+  border-radius: 12px;
+  padding: 12px 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 12px;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.2s;
 }
-.tmc-label { font-size: 12px; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
-.tmc-body  { display: flex; align-items: center; gap: 14px; }
-.tmc-emoji { font-size: 48px; line-height: 1; flex-shrink: 0; }
-.tmc-info  { display: flex; flex-direction: column; gap: 4px; }
-.tmc-name  { font-size: 18px; font-weight: 700; color: var(--text); }
-.tmc-note  { font-size: 13px; color: var(--text-muted); font-style: italic; }
-.change-btn {
+.hour-slot.active-slot {
+  border-color: var(--accent);
+  background: #f0eeff;
+}
+.hour-slot-time  { font-size: 14px; font-weight: 700; color: var(--text); }
+.hour-slot-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--accent);
+  background: #e8e4ff;
+  padding: 3px 10px;
+  border-radius: 99px;
+}
+
+/* =====================
+   TODAY LOG
+   ===================== */
+.today-log-section { margin-top: 20px; }
+.today-log-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+}
+.log-empty {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 13px;
+  padding: 20px 0;
+}
+.log-item {
+  background: var(--surface);
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-bottom: 8px;
+  box-shadow: var(--shadow);
+  border-left: 3px solid var(--accent);
+}
+.log-time {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.log-mood {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.log-emoji { font-size: 26px; flex-shrink: 0; }
+.log-info  { flex: 1; display: flex; flex-direction: column; gap: 2px; }
+.log-name  { font-size: 14px; font-weight: 700; color: var(--text); }
+.log-note  { font-size: 12px; color: var(--text-muted); font-style: italic; }
+.log-edit-btn {
   background: var(--surface2);
   border: 1.5px solid #e0e0f0;
   border-radius: 8px;
   color: var(--accent);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
-  padding: 6px 14px;
+  padding: 5px 12px;
   cursor: pointer;
+  flex-shrink: 0;
   transition: all 0.2s;
 }
-.change-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+.log-edit-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
 
 /* =====================
    CALENDAR

@@ -49,10 +49,13 @@
     <section class="tab-panel active" id="tab-home">
       <div class="section-title">Bagaimana perasaanmu hari ini?</div>
 
-      <!-- Grid mood selalu tampil -->
+      <!-- Slot jam aktif -->
+      <div class="hour-picker" id="hourPicker" style="display:none"></div>
+
+      <!-- Grid mood -->
       <div class="mood-grid" id="moodGrid"></div>
 
-      <!-- Note + simpan, muncul setelah pilih mood -->
+      <!-- Note + simpan -->
       <div class="note-area" id="noteArea" style="display:none">
         <label class="note-label">Tambahkan catatan (opsional)</label>
         <div class="note-input-row">
@@ -61,19 +64,10 @@
         </div>
       </div>
 
-      <!-- Hasil mood hari ini, tampil di bawah grid -->
-      <div class="today-mood-card" id="todayMoodCard" style="display:none">
-        <div class="tmc-header">
-          <div class="tmc-label">Mood kamu hari ini</div>
-          <button class="change-btn" onclick="changeMood()">Ubah</button>
-        </div>
-        <div class="tmc-body">
-          <div class="tmc-emoji" id="tmcEmoji"></div>
-          <div class="tmc-info">
-            <div class="tmc-name" id="tmcName"></div>
-            <div class="tmc-note" id="tmcNote"></div>
-          </div>
-        </div>
+      <!-- Log mood hari ini per jam -->
+      <div class="today-log-section">
+        <div class="today-log-title">Mood Hari Ini</div>
+        <div id="todayLog"></div>
       </div>
     </section>
 
