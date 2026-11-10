@@ -15,6 +15,52 @@
     <div class="splash-spinner"></div>
   </div>
 
+  <!-- ===================== -->
+  <!-- HALAMAN LOGIN/REGISTER -->
+  <!-- ===================== -->
+  <div class="auth-page" id="authPage" style="display:none">
+    <div class="auth-card">
+      <div class="auth-logo">🧠</div>
+      <div class="auth-title">MoodTracker</div>
+      <div class="auth-subtitle" id="authSubtitle">Masuk ke akun kamu</div>
+
+      <!-- Tab Login / Register -->
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="tabLogin"    onclick="showAuthTab('login')">Masuk</button>
+        <button class="auth-tab"        id="tabRegister" onclick="showAuthTab('register')">Daftar</button>
+      </div>
+
+      <div class="auth-form" id="authForm">
+        <!-- Nama (hanya di register) -->
+        <div class="auth-field" id="fieldName" style="display:none">
+          <label class="auth-label">Nama</label>
+          <input type="text" id="authName" class="auth-input" placeholder="Nama kamu" />
+        </div>
+
+        <!-- Email -->
+        <div class="auth-field">
+          <label class="auth-label">Email</label>
+          <input type="email" id="authEmail" class="auth-input" placeholder="email@contoh.com" />
+        </div>
+
+        <!-- Password -->
+        <div class="auth-field">
+          <label class="auth-label">Password</label>
+          <div class="auth-input-wrap">
+            <input type="password" id="authPassword" class="auth-input" placeholder="Minimal 6 karakter" />
+            <button class="auth-eye" onclick="togglePassword()" id="eyeBtn">👁</button>
+          </div>
+        </div>
+
+        <!-- Error message -->
+        <div class="auth-error" id="authError" style="display:none"></div>
+
+        <!-- Submit -->
+        <button class="auth-submit-btn" id="authSubmitBtn" onclick="handleAuth()">Masuk</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Header -->
   <header class="header" id="appHeader" style="display:none">
     <div class="header-left">
@@ -23,6 +69,8 @@
     </div>
     <div class="header-right">
       <span class="today-date" id="todayDate"></span>
+      <span class="header-username" id="headerUsername"></span>
+      <button class="logout-btn" onclick="handleLogout()" title="Keluar">Logout</button>
     </div>
   </header>
 
@@ -48,14 +96,8 @@
     <!-- TAB: HOME -->
     <section class="tab-panel active" id="tab-home">
       <div class="section-title">Bagaimana perasaanmu hari ini?</div>
-
-      <!-- Slot jam aktif -->
       <div class="hour-picker" id="hourPicker" style="display:none"></div>
-
-      <!-- Grid mood -->
       <div class="mood-grid" id="moodGrid"></div>
-
-      <!-- Note + simpan -->
       <div class="note-area" id="noteArea" style="display:none">
         <label class="note-label">Tambahkan catatan (opsional)</label>
         <div class="note-input-row">
@@ -63,8 +105,6 @@
           <button class="save-btn" id="saveBtn" onclick="saveMood()">Simpan<br>Mood</button>
         </div>
       </div>
-
-      <!-- Log mood hari ini per jam -->
       <div class="today-log-section">
         <div class="today-log-title">Mood Hari Ini</div>
         <div id="todayLog"></div>
@@ -111,8 +151,6 @@
   </main>
 
   <div class="toast" id="toast"></div>
-
-  <!-- Firebase SDK (modular v10) -->
   <script type="module" src="app.js"></script>
 </body>
 </html>
